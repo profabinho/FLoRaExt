@@ -1,0 +1,839 @@
+file 7577845 1667076779                                         
+version 3
+run General-0-20221029-17:52:36-61360
+attr configname General
+attr datetime 20221029-17:52:36
+attr datetimef 20221029-175236
+attr experiment General
+attr inifile n100-gw.ini
+attr iterationvars "$0=\"avg\""
+attr iterationvarsd avg
+attr iterationvarsf avg-
+attr measurement "$0=\"avg\""
+attr network floraext.simulations.LoRaRelayNetworkTest
+attr processid 61360
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../inet4.4/images
+config network floraext.simulations.LoRaRelayNetworkTest
+config output-vector-file ../results/n100-gw1-s0.ini.vec
+config **.maxTransmissionDuration 4s
+config **.energyDetection -110dBm
+config **.vector-recording true
+config rng-class cMersenneTwister
+config **.loRaGW[*].numUdpApps 1
+config **.loRaGW[0].packetForwarder.localPort 2000
+config **.loRaGW[0].packetForwarder.destPort 1000
+config **.loRaGW[0].packetForwarder.destAddresses "\"networkServer\""
+config **.loRaGW[0].packetForwarder.indexNumber 0
+config **.loRaRelay[*].numUdpApps 1
+config **.networkServer.numApps 1
+config **.networkServer.**.evaluateADRinServer true
+config **.networkServer.app[0].typename NetworkServerApp
+config **.networkServer.app[0].destAddresses "\"loRaGW[0]\""
+config **.networkServer.app[0].destPort 2000
+config **.networkServer.app[0].localPort 1000
+config **.networkServer.app[0].adrMethod "\"avg\""
+config **.numberOfPacketsToSend 0
+config sim-time-limit 1d
+config simtime-resolution -11
+config repeat 5
+config **.timeToFirstPacket exponential(1000s)
+config **.timeToNextPacket exponential(1000s)
+config **.alohaChannelModel false
+config **.loRaNodes[*].**.initFromDisplayString false
+config **.loRaNodes[*].**.evaluateADRinNode true
+config **.loRaNodes[*].**initialLoRaBW "125 kHz"
+config **.loRaNodes[*].**initialLoRaCR 4
+config **.loRaNodes[*].numApps 1
+config **.loRaNodes[*].app[0].typename SimpleLoRaApp
+config **.LoRaGWNic.radio.iAmGateway true
+config **.loRaGW[*].**.initFromDisplayString false
+config **.loRaRelay[*].**.initFromDisplayString false
+config **.loRaNodes[*].LoRaNic.radio.energyConsumer.typename LoRaEnergyConsumer
+config **.loRaNodes[*].**.energySourceModule "\"^.IdealEpEnergyStorage\""
+config **.loRaNodes[*].LoRaNic.radio.energyConsumer.configFile "xmldoc(\"../energyConsumptionParameters.xml\")"
+config **.sigma 3.57
+config **.constraintAreaMinX 0m
+config **.constraintAreaMinY 0m
+config **.constraintAreaMinZ 0m
+config **.constraintAreaMaxZ 0m
+config LoRaNetworkTest.**.radio.separateTransmissionParts false
+config LoRaNetworkTest.**.radio.separateReceptionParts false
+config **.ipv4Delayer.config "xmldoc(\"../cloudDelays.xml\")"
+config **.radio.radioMediumModule "\"LoRaMedium\""
+config **.LoRaMedium.pathLossType "\"LoRaLogNormalShadowing\""
+config **.minInterferenceTime 0s
+config **.displayAddresses false
+config **.numberOfNodes 1
+config **.numberOfGateways 1
+config **.numberOfRelays 1
+config **.constraintAreaMaxX 2376.0m
+config **.constraintAreaMaxY 1090.0m
+config **.loRaGW[0].**.initialX 300.00m
+config **.loRaGW[0].**.initialY 344.00m
+config **.loRaRelay[0].**.initialX 475.00m
+config **.loRaRelay[0].**.initialY 475.00m
+config output-scalar-file ../results/n100-gw1-s0.ini.sca
+config **.loRaNodes[0].**.initialX 800.63m
+config **.loRaNodes[0].**.initialY 500.08m
+config **.loRaNodes[0].**initialLoRaSF 12
+config **.loRaNodes[0].**initialLoRaTP 10dBm
+
+vector 0 LoRaRelayNetworkTest.loRaGW[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 1 LoRaRelayNetworkTest.loRaGW[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 2 LoRaRelayNetworkTest.loRaGW[0].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 3 LoRaRelayNetworkTest.networkServer.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+vector 4 LoRaRelayNetworkTest.networkServer.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+vector 5 LoRaRelayNetworkTest.networkServer.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+vector 6 LoRaRelayNetworkTest.internetCloud.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 7 LoRaRelayNetworkTest.internetCloud.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 8 LoRaRelayNetworkTest.gwRouter[0].ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 9 LoRaRelayNetworkTest.nsRouter.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+vector 10 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.radio.IdealEpEnergyStorage powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source powerConsumptionChanged
+attr title "Power consumption"
+vector 11 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 12 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.radio.energyConsumer powerConsumption:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source powerConsumptionChanged
+attr title "Power consumption"
+vector 13 LoRaRelayNetworkTest.loRaGW[0].LoRaGWNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 14 LoRaRelayNetworkTest.loRaRelay[0].LoRaGWNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+vector 15 LoRaRelayNetworkTest.loRaGW[0].LoRaGWNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 16 LoRaRelayNetworkTest.loRaGW[0].LoRaGWNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 17 LoRaRelayNetworkTest.loRaRelay[0].LoRaGWNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 18 LoRaRelayNetworkTest.loRaRelay[0].LoRaGWNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 19 LoRaRelayNetworkTest.loRaNodes[0].app[0] "SF Vector" ETV
+vector 20 LoRaRelayNetworkTest.loRaNodes[0].app[0] "TP Vector" ETV
+vector 21 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 22 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 23 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 24 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 25 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 26 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.radio.IdealEpEnergyStorage residualEnergyCapacity:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source residualEnergyCapacityChanged
+attr title "Residual energy capacity"
+vector 27 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+vector 28 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 29 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 30 LoRaRelayNetworkTest.loRaGW[0].udp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSent
+attr title "packets sent, packetBytes"
+vector 31 LoRaRelayNetworkTest.loRaGW[0].ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 32 LoRaRelayNetworkTest.loRaGW[0].ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 33 LoRaRelayNetworkTest.loRaGW[0].eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 34 LoRaRelayNetworkTest.loRaGW[0].eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 35 LoRaRelayNetworkTest.loRaGW[0].eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 36 LoRaRelayNetworkTest.loRaGW[0].eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 37 LoRaRelayNetworkTest.loRaGW[0].eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 38 LoRaRelayNetworkTest.loRaGW[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 39 LoRaRelayNetworkTest.loRaGW[0].eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 40 LoRaRelayNetworkTest.loRaGW[0].eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 41 LoRaRelayNetworkTest.loRaGW[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 42 LoRaRelayNetworkTest.gwRouter[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 43 LoRaRelayNetworkTest.gwRouter[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 44 LoRaRelayNetworkTest.gwRouter[0].ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 45 LoRaRelayNetworkTest.gwRouter[0].ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+vector 46 LoRaRelayNetworkTest.gwRouter[0].ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 47 LoRaRelayNetworkTest.gwRouter[0].eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 48 LoRaRelayNetworkTest.gwRouter[0].eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 49 LoRaRelayNetworkTest.gwRouter[0].eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 50 LoRaRelayNetworkTest.gwRouter[0].eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 51 LoRaRelayNetworkTest.gwRouter[0].eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 52 LoRaRelayNetworkTest.gwRouter[0].eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 53 LoRaRelayNetworkTest.gwRouter[0].eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 54 LoRaRelayNetworkTest.gwRouter[0].eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 55 LoRaRelayNetworkTest.gwRouter[0].eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 56 LoRaRelayNetworkTest.loRaGW[0].eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 57 LoRaRelayNetworkTest.loRaGW[0].eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 58 LoRaRelayNetworkTest.loRaGW[0].ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 59 LoRaRelayNetworkTest.gwRouter[0].ppp[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 60 LoRaRelayNetworkTest.gwRouter[0].ppp[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 61 LoRaRelayNetworkTest.gwRouter[0].ppp[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 62 LoRaRelayNetworkTest.gwRouter[0].ppp[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 63 LoRaRelayNetworkTest.gwRouter[0].ppp[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 64 LoRaRelayNetworkTest.gwRouter[0].ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 65 LoRaRelayNetworkTest.gwRouter[0].ppp[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 66 LoRaRelayNetworkTest.gwRouter[0].ppp[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 67 LoRaRelayNetworkTest.internetCloud.ppp[1].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 68 LoRaRelayNetworkTest.internetCloud.ppp[1].ppp passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 69 LoRaRelayNetworkTest.internetCloud.ppp[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 70 LoRaRelayNetworkTest.internetCloud.ppp[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 71 LoRaRelayNetworkTest.internetCloud.ppp[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 72 LoRaRelayNetworkTest.internetCloud.ppp[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 73 LoRaRelayNetworkTest.internetCloud.ppp[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 74 LoRaRelayNetworkTest.internetCloud.ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 75 LoRaRelayNetworkTest.internetCloud.ppp[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 76 LoRaRelayNetworkTest.internetCloud.ppp[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 77 LoRaRelayNetworkTest.nsRouter.ppp[0].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 78 LoRaRelayNetworkTest.nsRouter.ppp[0].ppp passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 79 LoRaRelayNetworkTest.nsRouter.ipv4.arp arpRequestSent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpRequestSent
+attr title "ARP request sent, packetBytes"
+vector 80 LoRaRelayNetworkTest.nsRouter.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 81 LoRaRelayNetworkTest.nsRouter.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 82 LoRaRelayNetworkTest.nsRouter.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 83 LoRaRelayNetworkTest.nsRouter.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 84 LoRaRelayNetworkTest.nsRouter.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 85 LoRaRelayNetworkTest.nsRouter.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 86 LoRaRelayNetworkTest.nsRouter.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 87 LoRaRelayNetworkTest.nsRouter.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 88 LoRaRelayNetworkTest.nsRouter.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 89 LoRaRelayNetworkTest.nsRouter.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 90 LoRaRelayNetworkTest.networkServer.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 91 LoRaRelayNetworkTest.networkServer.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 92 LoRaRelayNetworkTest.networkServer.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 93 LoRaRelayNetworkTest.networkServer.ipv4.arp arpReplySent:vector(packetBytes) ETV
+attr recordingmode vector(packetBytes)
+attr source arpReplySent
+attr title "ARP replies sent, packetBytes"
+vector 94 LoRaRelayNetworkTest.networkServer.ethernet encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source encapPk
+attr title "packets encapsulated, packetBytes"
+vector 95 LoRaRelayNetworkTest.networkServer.eth[0].queue incomingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPushStarted)
+attr title "incoming packet lengths"
+attr unit b
+vector 96 LoRaRelayNetworkTest.networkServer.eth[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 97 LoRaRelayNetworkTest.networkServer.eth[0].queue queueingTime:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source queueingTime(packetPulled)
+attr title "queueing times"
+attr unit s
+vector 98 LoRaRelayNetworkTest.networkServer.eth[0].queue outgoingPacketLengths:vector ETV
+attr interpolationmode none
+attr recordingmode vector
+attr source packetLength(packetPulled)
+attr title "outgoing packet lengths"
+attr unit b
+vector 99 LoRaRelayNetworkTest.networkServer.eth[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 100 LoRaRelayNetworkTest.networkServer.eth[0].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, packetBytes"
+vector 101 LoRaRelayNetworkTest.networkServer.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+vector 102 LoRaRelayNetworkTest.networkServer.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+vector 103 LoRaRelayNetworkTest.networkServer.eth[0].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToLower
+attr title "packets transmitted, packetBytes"
+vector 104 LoRaRelayNetworkTest.nsRouter.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source rxPkOk
+attr title "packets received OK, packetBytes"
+vector 105 LoRaRelayNetworkTest.nsRouter.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetSentToUpper
+attr title "packets passed to higher layer, packetBytes"
+vector 106 LoRaRelayNetworkTest.nsRouter.ethernet decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source decapPk
+attr title "packets decapsulated, packetBytes"
+vector 107 LoRaRelayNetworkTest.networkServer.udp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr recordingmode vector(packetBytes)
+attr source packetReceived
+attr title "packets received, packetBytes"
+vector 108 LoRaRelayNetworkTest.networkServer.app[0] "Vector of SNIR per node" ETV
+vector 109 LoRaRelayNetworkTest.networkServer.app[0] "Vector of RSSI per node" ETV
+vector 110 LoRaRelayNetworkTest.loRaNodes[0].LoRaNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+vector 111 LoRaRelayNetworkTest.networkServer.app[0] "Received Sequence number" ETV
+0	30057 8 0 0 0 0 1 0 0 0 0
+1	30065 8 0 0 0 0 1 0 0 0 0
+2	30073 8 0 0 0 0 1 0 0 0 0
+3	30081 57 0 105 0 1862.77632882124 3 0 2 3 5
+4	30138 8 0 0 0 0 1 0 0 0 0
+5	30146 8 0 0 0 0 1 0 0 0 0
+6	30154 154 0 164 0 2785.99946079604 7 0 1 3 3
+7	30308 8 0 0 0 0 1 0 0 0 0
+8	30316 154 0 159 0 2785.98945981004 7 0 1 3 3
+9	30470 8 0 0 0 0 1 0 0 0 0
+10	30478 770 0 129 0 2785.53947154547 30 0 0.1023 1.01046 0.0898701606
+11	31248 256 0 129 0 2785.53947154547 12 0 3 17 35
+12	31504 761 0 129 0 2785.53947154547 29 0 0.1023 1.01046 0.0898701606
+13	32265 27 0 0 0 0 3 0 4 4 16
+14	32292 27 0 0 0 0 3 0 4 4 16
+15	32319 9 0 0 0 0 1 1 1 1 1
+16	32328 9 0 0 0 0 1 1 1 1 1
+17	32337 9 0 0 0 0 1 1 1 1 1
+18	32346 9 0 0 0 0 1 1 1 1 1
+19	32355 52 3 115 1859.60421207467 2782.82734354547 2 12 12 24 288
+20	32407 52 3 115 1859.60421207467 2782.82734354547 2 10 10 20 200
+21	32459 52 4 116 1859.60421207467 2782.82734354547 2 80 80 160 12800
+22	32511 391397 4 116 0.1 2782.8 27828 0 800 800 640000
+23	423908 50 4 116 1859.60421207467 2782.82734354547 2 0 0 0 0
+24	423958 52 4 116 1859.60421207467 2782.82734354547 2 80 80 160 12800
+25	424010 391397 4 116 0.1 2782.8 27828 0 800 800 640000
+26	815407 325 4 129 1859.60421207467 2785.53947154547 9 -0.4143213888 0 -2.071606944 0.60491630666006
+27	815732 200 4 120 1859.60421207467 2784.53947154547 8 0 2 8 12
+28	815932 50 4 116 1859.60421207467 2782.82734354547 2 0 0 0 0
+29	815982 50 4 116 1859.60421207467 2782.82734354547 2 0 0 0 0
+30	816032 79 17 134 1861.31634182387 2785.98945736404 3 35 35 105 3675
+31	816111 53 18 135 1861.31634182387 2785.98945736404 2 28 28 56 1568
+32	816164 132 19 150 1861.31634182387 2785.98945861604 5 28 55 221 10643
+33	816296 137 20 151 1861.31634182387 2785.98945861604 5 368 584 2488 1294016
+34	816433 410456 20 137 0.1 2785.9 27859 0 9520 15360 124736000
+35	1226889 127 20 151 1861.31634182387 2785.98945861604 5 0 0 0 0
+36	1227016 137 20 151 1861.31634182387 2785.98945861604 5 368 584 2488 1294016
+37	1227153 410456 20 137 0.1 2785.9 27859 0 9520 15360 124736000
+38	1637609 132 20 151 1861.31634182387 2785.98945861604 5 46 73 311 20219
+39	1637741 127 20 151 1861.31634182387 2785.98945861604 5 0 0 0 0
+40	1637868 127 20 151 1861.31634182387 2785.98945861604 5 0 0 0 0
+41	1637995 132 23 153 1861.31634239987 2785.98945926404 5 64 73 347 24179
+42	1638127 132 24 154 1861.31634244987 2785.98945931404 5 64 73 347 24179
+43	1638259 132 24 154 1861.31634244987 2785.98945931404 5 64 73 347 24179
+44	1638391 132 25 155 1861.31634244987 2785.98945931404 5 46 55 257 13307
+45	1638523 53 26 142 1861.31634244987 2785.98945799004 2 28 28 56 1568
+46	1638576 53 27 143 1861.31634244987 2785.98945799004 2 28 28 56 1568
+47	1638629 55 28 144 1861.31634244987 2785.98945799004 2 368 368 736 270848
+48	1638684 410467 28 144 0.1 2785.9 27859 0 3680 3680 13542400
+49	2049151 51 28 144 1861.31634244987 2785.98945799004 2 0 0 0 0
+50	2049202 55 28 144 1861.31634244987 2785.98945799004 2 368 368 736 270848
+51	2049257 410467 28 144 0.1 2785.9 27859 0 3680 3680 13542400
+52	2459724 53 28 144 1861.31634244987 2785.98945799004 2 46 46 92 4232
+53	2459777 51 28 144 1861.31634244987 2785.98945799004 2 0 0 0 0
+54	2459828 51 28 144 1861.31634244987 2785.98945799004 2 0 0 0 0
+55	2459879 53 30 146 1861.31634302587 2785.98945856604 2 64 64 128 8192
+56	2459932 53 31 147 1861.31634307587 2785.98945861604 2 64 64 128 8192
+57	2459985 53 31 147 1861.31634307587 2785.98945861604 2 64 64 128 8192
+58	2460038 53 32 148 1861.31634307587 2785.98945861604 2 46 46 92 4232
+59	2460091 82 41 157 1861.31634377387 2785.98945931404 3 440 440 1320 580800
+60	2460173 410456 41 157 0.1 2785.9 27859 0 4400 8800 38720000
+61	2870629 76 41 157 1861.31634377387 2785.98945931404 3 0 0 0 0
+62	2870705 82 41 157 1861.31634377387 2785.98945931404 3 440 440 1320 580800
+63	2870787 410456 41 157 0.1 2785.9 27859 0 4400 8800 38720000
+64	3281243 79 41 157 1861.31634377387 2785.98945931404 3 62 62 186 11532
+65	3281322 76 41 157 1861.31634377387 2785.98945931404 3 0 0 0 0
+66	3281398 76 41 157 1861.31634377387 2785.98945931404 3 0 0 0 0
+67	3281474 79 44 160 1861.31634431987 2785.98945986004 3 62 62 186 11532
+68	3281553 79 44 160 1861.31634431987 2785.98945986004 3 55 55 165 9075
+69	3281632 82 47 163 1861.32634475987 2785.99946030004 3 440 440 1320 580800
+70	3281714 410456 47 163 0.1 2785.9 27859 0 4400 8800 38720000
+71	3692170 76 47 163 1861.32634475987 2785.99946030004 3 0 0 0 0
+72	3692246 82 47 163 1861.32634475987 2785.99946030004 3 440 440 1320 580800
+73	3692328 410456 47 163 0.1 2785.9 27859 0 4400 8800 38720000
+74	4102784 79 47 163 1861.32634475987 2785.99946030004 3 62 62 186 11532
+75	4102863 76 47 163 1861.32634475987 2785.99946030004 3 0 0 0 0
+76	4102939 76 47 163 1861.32634475987 2785.99946030004 3 0 0 0 0
+77	4103015 79 49 165 1861.32634530587 2785.99946084604 3 62 62 186 11532
+78	4103094 79 49 165 1861.32634530587 2785.99946084604 3 55 55 165 9075
+79	4103173 53 50 166 1861.32634530587 2785.99946084604 2 28 28 56 1568
+80	4103226 132 51 180 1861.32634530587 2785.99946209804 5 28 55 221 10643
+81	4103358 138 52 181 1861.32634530587 2785.99946209804 5 368 584 2488 1294016
+82	4103496 410470 52 168 0.1 2785.9 27859 0 9520 15360 124736000
+83	4513966 128 52 181 1861.32634530587 2785.99946209804 5 0 0 0 0
+84	4514094 138 52 181 1861.32634530587 2785.99946209804 5 368 584 2488 1294016
+85	4514232 410470 52 168 0.1 2785.9 27859 0 9520 15360 124736000
+86	4924702 133 52 181 1861.32634530587 2785.99946209804 5 46 73 311 20219
+87	4924835 128 52 181 1861.32634530587 2785.99946209804 5 0 0 0 0
+88	4924963 128 52 181 1861.32634530587 2785.99946209804 5 0 0 0 0
+89	4925091 106 53 169 1861.32634588187 2785.99946142204 4 64 73 274 18850
+90	4925197 106 54 170 1861.32634593187 2785.99946147204 4 64 73 274 18850
+91	4925303 106 54 170 1861.32634593187 2785.99946147204 4 64 73 274 18850
+92	4925409 106 55 171 1861.32634593187 2785.99946147204 4 46 55 202 10282
+93	4925515 53 56 172 1861.32634593187 2785.99946147204 2 28 28 56 1568
+94	4925568 53 57 173 1861.32634593187 2785.99946147204 2 28 28 56 1568
+95	4925621 55 58 174 1861.32634593187 2785.99946147204 2 368 368 736 270848
+96	4925676 410467 58 174 0.1 2785.9 27859 0 3680 3680 13542400
+97	5336143 51 58 174 1861.32634593187 2785.99946147204 2 0 0 0 0
+98	5336194 55 58 174 1861.32634593187 2785.99946147204 2 368 368 736 270848
+99	5336249 410467 58 174 0.1 2785.9 27859 0 3680 3680 13542400
+100	5746716 55 58 174 1861.32634593187 2785.99946147204 2 46 46 92 4232
+101	5746771 53 58 174 1861.32634593187 2785.99946147204 2 0 0 0 0
+102	5746824 53 58 174 1861.32634593187 2785.99946147204 2 0 0 0 0
+103	5746877 55 60 176 1861.32634650787 2785.99946204804 2 64 64 128 8192
+104	5746932 55 61 177 1861.32634655787 2785.99946209804 2 64 64 128 8192
+105	5746987 55 61 177 1861.32634655787 2785.99946209804 2 64 64 128 8192
+106	5747042 55 62 178 1861.32634655787 2785.99946209804 2 46 46 92 4232
+107	5747097 55 71 105 1861.32634725587 1862.77632882124 2 35 35 70 2450
+108	5747152 121 72 109 1861.32634725587 1863.97632882124 3 1.7715097133214 13.441717255056 17.696662347829 189.98546071317
+109	5747273 124 72 109 1861.32634725587 1863.97632882124 3 -134.51656462055 -125.71545244173 -394.74858168282 51993.787297256
+110	5747397 134 74 129 1862.31634007467 2785.53947154547 5 0 1 3 3
+111	5747531 53 75 109 1862.52634725587 1863.97632882124 2 0 0 0 0
+vector 112 LoRaRelayNetworkTest.internetCloud.ppp[1].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 113 LoRaRelayNetworkTest.internetCloud.ppp[1].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+vector 114 LoRaRelayNetworkTest.nsRouter.ppp[0].queue outgoingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPulled)
+attr title "outgoing datarate"
+attr unit bps
+vector 115 LoRaRelayNetworkTest.nsRouter.ppp[0].queue incomingDataRate:vector ETV
+attr interpolationmode linear
+attr recordingmode vector
+attr source throughput(packetPushStarted)
+attr title "incoming datarate"
+attr unit bps
+22	5748484 518 182 182 2782.9 2785.99946274109 32 0 800 800 640000
+25	5749002 518 182 182 2782.9 2785.99946274109 32 0 800 800 640000
+34	5749520 40 182 182 2785.99946274109 2785.99946274109 1 9571.4233246254 9571.4233246254 9571.4233246254 91612144.459183
+37	5749560 40 182 182 2785.99946274109 2785.99946274109 1 9571.4233246254 9571.4233246254 9571.4233246254 91612144.459183
+48	5749600 40 182 182 2785.99946274109 2785.99946274109 1 3699.8779238048 3699.8779238048 3699.8779238048 13689096.651058
+51	5749640 40 182 182 2785.99946274109 2785.99946274109 1 3699.8779238048 3699.8779238048 3699.8779238048 13689096.651058
+60	5749680 38 182 182 2785.99946274109 2785.99946274109 1 4423.76708281 4423.76708281 4423.76708281 19569715.202954
+63	5749718 38 182 182 2785.99946274109 2785.99946274109 1 4423.76708281 4423.76708281 4423.76708281 19569715.202954
+70	5749756 38 182 182 2785.99946274109 2785.99946274109 1 4423.76708281 4423.76708281 4423.76708281 19569715.202954
+73	5749794 38 182 182 2785.99946274109 2785.99946274109 1 4423.76708281 4423.76708281 4423.76708281 19569715.202954
+82	5749832 40 182 182 2785.99946274109 2785.99946274109 1 9571.4233246254 9571.4233246254 9571.4233246254 91612144.459183
+85	5749872 40 182 182 2785.99946274109 2785.99946274109 1 9571.4233246254 9571.4233246254 9571.4233246254 91612144.459183
+96	5749912 40 182 182 2785.99946274109 2785.99946274109 1 3699.8779238048 3699.8779238048 3699.8779238048 13689096.651058
+99	5749952 40 182 182 2785.99946274109 2785.99946274109 1 3699.8779238048 3699.8779238048 3699.8779238048 13689096.651058
+112	5749992 456963 182 182 0.1 2785.99946274109 27860 0 0 0 0
+113	6206955 456963 182 182 0.1 2785.99946274109 27860 0 0 0 0
+114	6663918 456963 182 182 0.1 2785.99946274109 27860 0 0 0 0
+115	7120881 456963 182 182 0.1 2785.99946274109 27860 0 0 0 0
+

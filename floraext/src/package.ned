@@ -1,0 +1,3 @@
+package floraext;
+
+@license(LGPL);
