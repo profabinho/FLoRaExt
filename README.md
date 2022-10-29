@@ -7,7 +7,7 @@ FLoRaExt framework is an extension of [FloRa] (Framework for LoRa) with the purp
 - [Linux Ubuntu 22.04 LTS](https://ubuntu.com/download/desktop)
 - [OMNeT++ 6.0](https://omnetpp.org/download/)
 - [INET 4.4](https://inet.omnetpp.org/)
-- [FLoRa 1.1.0](https://github.com/florasim/flora)
+- [FLoRa 1.1](https://github.com/florasim/flora)
 
 ## License
 
